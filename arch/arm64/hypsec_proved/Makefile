@@ -24,6 +24,7 @@ obj-y += BootAux.o
 obj-y += Helper.o
 obj-y += VCPUOpsAux.o
 obj-y += VCPUOps.o
+#obj-y += printf.o
 #obj-y += mmap.o
 #obj-y += sysreg-sr.o
 obj-y += sysreg-sr-opt.o

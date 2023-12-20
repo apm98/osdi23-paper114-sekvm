@@ -140,6 +140,8 @@ struct el2_data {
 
 	u64 phys_mem_start;
 	u64 phys_mem_size;
+
+	bool qos_start;
 };
 
 void init_el2_data_page(void);
@@ -368,6 +370,11 @@ void v_revoke_stage2_sg_gpa(u32 vmid, u64 addr, u64 size);
 void init_hacl_hash(struct el2_data *el2_data);
 uint64_t get_hacl_hash_sha2_constant_k384_512(int i);
 uint32_t get_hacl_hash_sha2_constant_k224_256(int i);
+
+/*
+* Register QoS start
+*/
+void start_qos_for_vm(u32 vmid);
 
 static u64 inline get_pt_vttbr(u32 vmid)
 {

@@ -1,4 +1,6 @@
 #include "hypsec.h"
+//#include "printf.h"
+//#include <asm/kvm_hyp.h>
 
 /*
  * MemManager

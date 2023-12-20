@@ -1,4 +1,5 @@
 #include "hypsec.h"
+#include "asm/kvm_hyp.h"
 
 /*
  * MemoryOps
@@ -160,4 +161,17 @@ void __hyp_text v_revoke_stage2_sg_gpa(u32 vmid, u64 addr, u64 size)
         addr += PAGE_SIZE;
         len -= 1UL;
     }
+}
+
+//Guest hypercall
+void __hyp_text start_qos_for_vm(u32 vmid)
+{
+	print_string("HVC_QOS_SET_START: Attempting");
+	struct el2_data* el2_data;
+	el2_data = kern_hyp_va(kvm_ksym_ref(el2_data_start));
+	acquire_lock_core();
+	el2_data->qos_start = 1;
+	release_lock_core();
+	print_string("HVC_QOS_SET_START: Success");
+
 }

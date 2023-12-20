@@ -33,6 +33,10 @@ int __hyp_text handle_pvops(u32 vmid, u32 vcpuid)
 		//case KVM_SET_BALLOON_PFN:
 		//	set_balloon_pfn(shadow_ctxt);
 		//	break;
+		case HVC_QOS_SET_START:
+			print_string("\rHVC_QOS_SET_START: Called from pvops\n");
+			start_qos_for_vm(vmid); // in MemManager.c
+			break;
 		default:
 			return -EINVAL;
 	}

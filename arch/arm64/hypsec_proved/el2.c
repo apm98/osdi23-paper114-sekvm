@@ -177,6 +177,10 @@ void __hyp_text handle_host_hvc(struct s2_host_regs *hr)
 		//__kvm_phys_addr_ioremap((u32)get_host_reg(hr, 1), get_host_reg(hr, 2), get_host_reg(hr, 3), get_host_reg(hr, 4));
 		v_kvm_phys_addr_ioremap((u32)get_host_reg(hr, 1), get_host_reg(hr, 2), get_host_reg(hr, 3), get_host_reg(hr, 4));
 		break;
+	/*case HVC_QOS_SET_START:
+		start_qos_for_vm((u64)get_host_reg(hr, 1));
+		print_string("HVC_QOS_SET_START: CAlled from el2.c");
+		break;*/
 	default:
 		print_string("\rno support hvc:\n");
 		printhex_ul(callno);
